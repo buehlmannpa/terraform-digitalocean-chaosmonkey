@@ -1,0 +1,14 @@
+- become: yes
+  hosts: all
+  name: git-install
+  tasks:
+    - name: Add the user 'chaosmonkey' and add it to 'sudo'
+      user:
+        name: chaosmonkey
+        group: sudo
+      
+    - name: Install git package
+      apt:
+        name: git
+        update_cache: yes
+        state: latest

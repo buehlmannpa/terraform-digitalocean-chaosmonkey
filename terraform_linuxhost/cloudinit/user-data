@@ -1,0 +1,18 @@
+#cloud-config
+users:
+  - name: chaosmonkey
+    home: /home/chaosmonkey
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDmYxrG1+MBHiAGY+pZxEEXYgASeFF3vU6DuvaCYW9dtSfhsxKkeprlLjugTW5SuDtmtpZeRHUPyrkdgt9lWiL4jqrKR2nL+SEp+YFURK01s8UFkrxJkKjJPWSrh9sSUdk1DhQI4VNqXjNXGFH2EjyEXmYpDsnuvb+R+oUnBNt0Vhg2CDfDvBmEaaTpQZecQ5pRjuwUMPRxmgPNhl+IRrkoWsdEX0mvDPMaKipqVaYmXrt6+ve+ctSnu7SYzJtztfKMW5tXXImOj3d95s7k/sY7Ii11wXO5HHtC3/kL6qI9lWPOVZuwD3Gc0WuB8CLmfODP1u2deNITKWYYHaRyBgnCFYL+eF5ce6qH6aMj4VCYKqMGNjfiUnSHwkSEROzdyu594MlPLpyJj20W9CVUn5tPNeh6GV+6VYAYJ/7cJYDSYe1Y82lvKmwXvmwmYtncgSPPO0SLYOzRsGi2z5t7ELrxNyB7iwXA69WXK4ADjg2X0YAYt+XVRaeaLtcMdTaqSzc= pbu@Solis.local
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+  - name: root
+    shell: /bin/bash
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDmYxrG1+MBHiAGY+pZxEEXYgASeFF3vU6DuvaCYW9dtSfhsxKkeprlLjugTW5SuDtmtpZeRHUPyrkdgt9lWiL4jqrKR2nL+SEp+YFURK01s8UFkrxJkKjJPWSrh9sSUdk1DhQI4VNqXjNXGFH2EjyEXmYpDsnuvb+R+oUnBNt0Vhg2CDfDvBmEaaTpQZecQ5pRjuwUMPRxmgPNhl+IRrkoWsdEX0mvDPMaKipqVaYmXrt6+ve+ctSnu7SYzJtztfKMW5tXXImOj3d95s7k/sY7Ii11wXO5HHtC3/kL6qI9lWPOVZuwD3Gc0WuB8CLmfODP1u2deNITKWYYHaRyBgnCFYL+eF5ce6qH6aMj4VCYKqMGNjfiUnSHwkSEROzdyu594MlPLpyJj20W9CVUn5tPNeh6GV+6VYAYJ/7cJYDSYe1Y82lvKmwXvmwmYtncgSPPO0SLYOzRsGi2z5t7ELrxNyB7iwXA69WXK4ADjg2X0YAYt+XVRaeaLtcMdTaqSzc= pbu@Solis.local
+    
+runcmd:
+#  - sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+  - sed -i -e '$aAllowUsers chaosmonkey' /etc/ssh/sshd_config
+  - restart ssh

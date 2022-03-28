@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"chaosmonkey_host","Source":"./terraform_linuxhost","Dir":"terraform_linuxhost"},{"Key":"k8s_cluster","Source":"./terraform_kubernetes","Dir":"terraform_kubernetes"}]}
