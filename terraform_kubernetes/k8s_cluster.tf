@@ -15,7 +15,7 @@ resource "digitalocean_kubernetes_cluster" "k8s_cluster_c1" {
     max_nodes  = 10
     node_count = 3
 
-    tags       = ["kubernetes", "nodes"]
+    tags = ["kubernetes", "nodes"]
 
     labels = {
       env     = "prod"

@@ -14,8 +14,8 @@ variable "pvt_key" {
   description = "Default location of ssh key on private macbook"
 }
 variable "pub_key" {
-  type    = string
-  default = "/Users/pbu/.ssh/id_rsa.pub"
+  type        = string
+  default     = "/Users/pbu/.ssh/id_rsa.pub"
   description = "Default location of ssh key on private macbook"
 }
 
