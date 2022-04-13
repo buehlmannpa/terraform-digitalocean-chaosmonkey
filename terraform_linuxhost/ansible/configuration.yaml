@@ -16,7 +16,7 @@
       
     - name: Creates directory
       file:
-        path: /home/chaosmonkey/download
+        path: /home/chaosmonkey/download/
         state: directory
         owner: chaosmonkey
         group: chaosmonkey
@@ -30,6 +30,24 @@
         group: chaosmonkey
         mode: '0755'
 
+    - name: Creates chaos-monkey backup log directory
+      file:
+        path: /data/chaos-monkey/backup/
+        state: directory
+        owner: root
+        group: root
+        mode: '0744'
+
+######
+###### ssh configuration for backup
+######
+    - name: Copy private ssh-key to remote host
+      ansible.builtin.copy:
+        src: /Users/pbu/id_rsa
+        dest: /home/chaosmonkey/.ssh/id_rsa
+        owner: chaosmonkey
+        group: chaosmonkey
+        mode: '0600'
 
 ######
 ###### Clone Chaos-Monkey Git-Repository
@@ -95,40 +113,14 @@
 ######
 ###### Start Chaos-Monkey
 ######
-#    - name: Execute chaos-monkey
-#      command: source /home/chaosmonkey/chaosmonkey-app/chaosmonkey.sh
+    - name: Execute chaos-monkey
+      command: /home/chaosmonkey/chaosmonkey-app/chaosmonkey.sh
 
-## -> create cronjob
-## - name: Ensure a job that runs at 2 and 5 exists. Creates an entry like "0 5,2 * * ls -alh > /dev/null"
-##   ansible.builtin.cron:
-##     name: "check dirs"
-##     minute: "0"
-##     hour: "5,2"
-##     job: "ls -alh > /dev/null"
-
-
-    # You can use shell to run other executables to perform actions inline
-#    - name: Run expect to wait for a successful PXE boot via out-of-band CIMC
-#      ansible.builtin.shell: |
-#        set timeout 300
-#        spawn ssh admin@{{ cimc_host }}
-#
-#        expect "password:"
-#        send "{{ cimc_password }}\n"
-#
-#        expect "\n{{ cimc_name }}"
-#        send "connect host\n"
-#
-#        expect "pxeboot.n12"
-#        send "\n"
-#
-#        exit 0
-#
-#        /usr/local/bin/doctl kubernetes cluster kubeconfig save k8s-cluter-c1-fra1-1227
-#        /home/chaosmonkey/download/do_token
-#      args:
-#        executable: /usr/bin/expect
-#      delegate_to: localhost
+#    - name: log in as ubuntu and do something as scrapy
+#      remote_user: chaosmonkey
+#      sudo: true
+#      sudo_user: scrapy
+#      shell: /home/chaosmonkey/chaosmonkey-app/chaosmonkey.sh
 
 
 ######
