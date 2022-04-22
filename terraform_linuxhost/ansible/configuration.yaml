@@ -34,9 +34,9 @@
       file:
         path: /data/chaos-monkey/backup/
         state: directory
-        owner: root
-        group: root
-        mode: '0744'
+        owner: chaosmonkey
+        group: chaosmonkey
+        mode: '0755'
 
 ######
 ###### ssh configuration for backup
@@ -115,12 +115,13 @@
 ######
     - name: Execute chaos-monkey
       command: /home/chaosmonkey/chaosmonkey-app/chaosmonkey.sh
+      become: yes
+      become_user: chaosmonkey
 
-#    - name: log in as ubuntu and do something as scrapy
-#      remote_user: chaosmonkey
-#      sudo: true
-#      sudo_user: scrapy
-#      shell: /home/chaosmonkey/chaosmonkey-app/chaosmonkey.sh
+    - name: Execute chaos-monkey backup 
+      command: /home/chaosmonkey/chaosmonkey-app/backup.sh
+      become: yes
+      become_user: chaosmonkey
 
 
 ######

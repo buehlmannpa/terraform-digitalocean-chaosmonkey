@@ -5,7 +5,7 @@ variable "do_token" {
   type        = string
   sensitive   = true
   description = "API Token to access digitalocean cloud"
-  default     = "d332320576bd308e4ce59e3cd35c4a600bd2abdd94689385cbdec5d419436479"
+  #default     = "d332320576bd308e4ce59e3cd35c4a600bd2abdd94689385cbdec5d419436479"
 }
 
 variable "pvt_key" {

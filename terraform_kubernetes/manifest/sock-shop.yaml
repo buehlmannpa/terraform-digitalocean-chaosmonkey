@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: sock-shop
+  name: sockshop
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -10,9 +10,9 @@ metadata:
   name: carts
   labels:
     name: carts
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: carts
@@ -63,7 +63,7 @@ metadata:
         prometheus.io/scrape: 'true'
   labels:
     name: carts
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -78,9 +78,9 @@ metadata:
   name: carts-db
   labels:
     name: carts-db
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: carts-db
@@ -120,7 +120,7 @@ metadata:
   name: carts-db
   labels:
     name: carts-db
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -135,9 +135,9 @@ metadata:
   name: catalogue
   labels:
     name: catalogue
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: catalogue
@@ -193,7 +193,7 @@ metadata:
         prometheus.io/scrape: 'true'
   labels:
     name: catalogue
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -208,9 +208,9 @@ metadata:
   name: catalogue-db
   labels:
     name: catalogue-db
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: catalogue-db
@@ -239,7 +239,7 @@ metadata:
   name: catalogue-db
   labels:
     name: catalogue-db
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -252,9 +252,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: front-end
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: front-end
@@ -308,7 +308,7 @@ metadata:
         prometheus.io/scrape: 'true'
   labels:
     name: front-end
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   type: NodePort
   ports:
@@ -324,9 +324,9 @@ metadata:
   name: orders
   labels:
     name: orders
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: orders
@@ -377,7 +377,7 @@ metadata:
         prometheus.io/scrape: 'true'
   labels:
     name: orders
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -392,9 +392,9 @@ metadata:
   name: orders-db
   labels:
     name: orders-db
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: orders-db
@@ -434,7 +434,7 @@ metadata:
   name: orders-db
   labels:
     name: orders-db
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -449,9 +449,9 @@ metadata:
   name: payment
   labels:
     name: payment
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: payment
@@ -504,7 +504,7 @@ metadata:
         prometheus.io/scrape: 'true'
   labels:
     name: payment
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -519,9 +519,9 @@ metadata:
   name: queue-master
   labels:
     name: queue-master
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: queue-master
@@ -556,7 +556,7 @@ metadata:
         prometheus.io/scrape: 'true'
   labels:
     name: queue-master
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -571,9 +571,9 @@ metadata:
   name: rabbitmq
   labels:
     name: rabbitmq
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: rabbitmq
@@ -619,7 +619,7 @@ metadata:
         prometheus.io/port: '9090'
   labels:
     name: rabbitmq
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -639,9 +639,9 @@ metadata:
   name: session-db
   labels:
     name: session-db
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: session-db
@@ -676,7 +676,7 @@ metadata:
   name: session-db
   labels:
     name: session-db
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -691,9 +691,9 @@ metadata:
   name: shipping
   labels:
     name: shipping
-  namespace: sock-shop
+  namespace: sockshop
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: shipping
@@ -746,7 +746,7 @@ metadata:
         prometheus.io/scrape: 'true'
   labels:
     name: shipping
-  namespace: sock-shop
+  namespace: sockshop
 spec:
   ports:
     # the port that this service should serve on
@@ -762,9 +762,9 @@ spec:
 #  name: user
 #  labels:
 #    name: user
-#  namespace: sock-shop
+#  namespace: sockshop
 #spec:
-#  replicas: 1
+#  replicas: 3
 #  selector:
 #    matchLabels:
 #      name: user
@@ -820,7 +820,7 @@ spec:
 #        prometheus.io/scrape: 'true'
 #  labels:
 #    name: user
-#  namespace: sock-shop
+#  namespace: sockshop
 #spec:
 #  ports:
 #    # the port that this service should serve on
@@ -836,9 +836,9 @@ spec:
 #  name: user-db
 #  labels:
 #    name: user-db
-#  namespace: sock-shop
+#  namespace: sockshop
 #spec:
-#  replicas: 1
+#  replicas: 3
 #  selector:
 #    matchLabels:
 #      name: user-db
@@ -879,7 +879,7 @@ spec:
 #  name: user-db
 #  labels:
 #    name: user-db
-#  namespace: sock-shop
+#  namespace: sockshop
 #spec:
 #  ports:
 #    # the port that this service should serve on
