@@ -1,6 +1,3 @@
-#----------------
-# Environment Vars
-#----------------
 variable "do_token" {
   type        = string
   sensitive   = true
@@ -9,15 +6,16 @@ variable "do_token" {
 
 variable "pvt_key" {
   type        = string
-  #default     = "/Users/pbu/.ssh/id_rsa"
   default     = "/home/buehlmannpa/.ssh/id_rsa"
   description = "Default location of ssh key on private macbook"
+  #default     = "/Users/pbu/.ssh/id_rsa"
 }
+
 variable "pub_key" {
   type        = string
-  #default     = "/Users/pbu/.ssh/id_rsa.pub"
   default     = "/home/buehlmannpa/.ssh/id_rsa.pub"
   description = "Default location of ssh key on private macbook"
+  //default     = "/Users/pbu/.ssh/id_rsa.pub"
 }
 
 variable "region" {
