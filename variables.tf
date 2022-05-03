@@ -42,7 +42,7 @@ variable "droplet_size" {
   description = "Droptlet size of the chaos-monkey host"
 }
 
-variable "volumename" {
+variable "volume_name" {
   type        = string
   default     = "vlscmn-fra1-vol1"
   description = "Volume name of the chaos-monkey host volume"
@@ -51,7 +51,7 @@ variable "volumename" {
 variable "volume_size" {
   type        = number
   default     = 5
-  description = "Volume size of the chaos-monkey host volume"
+  description = "Volume size of the chaos-monkey host volume (GB)"
 }
 
 variable "volume_filesystem_type" {

@@ -1,13 +1,13 @@
 # Create NonProd Volume for Chaos-Monkey Droplet
-resource "digitalocean_volume" "cm_nonprod" {
+resource "digitalocean_volume" "chaosmonkey" {
   region                  = var.region
-  name                    = var.volumename
+  name                    = var.volume_name
   size                    = var.volume_size
   initial_filesystem_type = var.volume_filesystem_type
 }
 
 # Create NonProd Chaos-Monkey Droplet
-resource "digitalocean_droplet" "cm_nonprod" {
+resource "digitalocean_droplet" "chaosmonkey" {
   image     = var.droplet_image
   name      = var.hostname
   region    = var.region
@@ -20,15 +20,15 @@ resource "digitalocean_droplet" "cm_nonprod" {
 }
 
 # Attach Volume to Droplet
-resource "digitalocean_volume_attachment" "cm_nonprod" {
-  droplet_id = digitalocean_droplet.cm_nonprod.id
-  volume_id  = digitalocean_volume.cm_nonprod.id
+resource "digitalocean_volume_attachment" "chaosmonkey" {
+  droplet_id = digitalocean_droplet.chaosmonkey.id
+  volume_id  = digitalocean_volume.chaosmonkey.id
 }
 
 output "hostname" {
-  value = resource.digitalocean_droplet.cm_nonprod.name
+  value = resource.digitalocean_droplet.chaosmonkey.name
 }
 
 output "ip" {
-  value = resource.digitalocean_droplet.cm_nonprod.ipv4_address
+  value = resource.digitalocean_droplet.chaosmonkey.ipv4_address
 }
