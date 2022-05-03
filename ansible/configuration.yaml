@@ -18,6 +18,12 @@
         name: bash
         update_cache: yes
         state: latest
+    
+    - name: Install Apache
+      apt: 
+        name: apache2
+        update_cache: yes
+        state: latest
       
     - name: Creates directory
       file:
@@ -130,3 +136,57 @@
       command: /home/chaosmonkey/chaosmonkey-app/backup.sh
       become: yes
       become_user: chaosmonkey
+
+
+######
+###### Set up apache
+######
+    - name: Create document root
+      file:
+        path: "/var/www/chaosmonkey"
+        state: directory
+        owner: "chaosmonkey"
+        mode: '0755'
+
+    - name: Copy chaos-monkey logo to apache direcotry
+      ansible.builtin.copy:
+        src: "webpage/chaosmonkey_logo.png"
+        dest: "/var/www/chaosmonkey/chaosmonkey_logo.png"
+        owner: chaosmonkey
+        group: chaosmonkey
+        mode: '0755'
+
+    - name: Copy webpage to apache direcotry
+      template:
+        src: "webpage/index.html.j2"
+        dest: "/var/www/chaosmonkey/index.html"
+
+    - name: Set up Apache virtuahHost
+      template:
+        src: "webpage/apache.conf.j2"
+        dest: "/etc/apache2/sites-available/chaosmonkey.conf"
+
+    - name: Enable new site
+      shell: /usr/sbin/a2ensite chaosmonkey.conf
+      notify: Reload Apache
+
+    - name: Disable default Apache site
+      shell: /usr/sbin/a2dissite 000-default.conf
+      notify: Reload Apache
+
+    - name: UFW - Allow HTTP on port 80
+      ufw:
+        rule: allow
+        port: "80"
+        proto: tcp
+
+  handlers:
+    - name: Reload Apache
+      service:
+        name: apache2
+        state: reloaded
+
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
