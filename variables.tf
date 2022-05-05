@@ -21,7 +21,7 @@ variable "pub_key" {
 variable "region" {
   type        = string
   default     = "fra1"
-  description = "VPC regiion where the componentes where deployed"
+  description = "VPC region where the components where deployed"
 }
 
 variable "hostname" {

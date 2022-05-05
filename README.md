@@ -36,7 +36,7 @@ No modules.
 | <a name="input_do_token"></a> [digitalocean\_do_token](#input\_digitalocean\_do_token) | Digital Ocean Token to authenticate against the Digital Ocean cli-tool | `string` | n/a | yes |
 | <a name="input_pvt_key"></a> [ssh\_pvt_key](#input\_ssh\_pvt_key) | Private SSH-Key path for the ssh connection | `string` | `"/home/buehlmannpa/.ssh/id_rsa"` | yes |
 | <a name="input_pub_key"></a> [ssh\_pub_key](#input\_ssh\_pub_key) | Pulbic SSH-Key path for the ssh connection | `string` | `"/home/buehlmannpa/.ssh/id_rsa.pub"` | yes |
-| <a name="input_region"></a> [digitalocean\_region](#input\_digitalocean\_region) | VPC regiion where the componentes where deployed | `string` | `"fra1"` | yes |
+| <a name="input_region"></a> [digitalocean\_region](#input\_digitalocean\_region) | VPC region where the components where deployed | `string` | `"fra1"` | yes |
 | <a name="input_hostname"></a> [digitalocean\_hostname](#input\_digitalocean\_hostname) | Name of the chaos-monkey host | `string` | `"vlscmn-fra1"` | yes |
 | <a name="input_droplet_image"></a> [digitalocean\_droplet_image](#input\_digitalocean\_droplet_image) | Droplet image of the chaos-monkey host | `string` | `"ubuntu-20-04-x64"` | no |
 | <a name="input_droplet_size"></a> [digitalocean\_droplet_size](#input\_digitalocean\_droplet_size) | Droptlet size of the chaos-monkey host | `string` | `"s-1vcpu-1gb"` | no |

@@ -49,6 +49,10 @@
         group: chaosmonkey
         mode: '0755'
 
+    - name: Set timezone to Europe/Zurich
+      community.general.timezone:
+        name: Europe/Zurich
+
 ######
 ###### ssh configuration for backup
 ######
