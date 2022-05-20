@@ -5,24 +5,47 @@
     - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
       apt:
         update_cache: yes
+        force_apt_get: yes
         cache_valid_time: 3600
+
+    - name: Wait for 1 min to update system and unlock lock file
+      pause:
+        minutes: 1
+
+    - name: Remove apt lock file
+      file:
+        state: absent
+        path: "/var/lib/dpkg/lock-frontend"
 
     - name: Install git package
       apt:
         name: git
         update_cache: yes
+        force_apt_get: yes
         state: latest
+
+    - name: Remove apt lock file
+      file:
+        state: absent
+        path: "/var/lib/dpkg/lock-frontend"
 
     - name: Install bash package
       apt:
         name: bash
         update_cache: yes
+        force_apt_get: yes
         state: latest
+    
+    - name: Remove apt lock file
+      file:
+        state: absent
+        path: "/var/lib/dpkg/lock-frontend"
     
     - name: Install Apache
       apt: 
         name: apache2
         update_cache: yes
+        force_apt_get: yes
         state: latest
       
     - name: Creates directory
