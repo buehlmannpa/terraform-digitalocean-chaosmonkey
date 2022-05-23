@@ -68,7 +68,7 @@ ssh chaosmonkey@<ip_address>
 module "terraform-digitalocean-chaosmonkey" {
   source      = "git::ssh://git@github.com/buehlmannpa/terraform-digitalocean-chaosmonkey.git?ref=main"
 
-  do_token    = var.collectord_license_key
+  do_token    = var.do_token
   pvt_key     = var.pvt_key
   pub_key     = var.pub_key
   region      = var.region
